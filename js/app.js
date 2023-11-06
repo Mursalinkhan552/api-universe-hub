@@ -39,6 +39,10 @@ const showDataALL = (allData) => {
 
     const featureContainer = document.getElementById('feature-container');
     featureContainer.innerText = '';
+    const btnContainer = document.getElementById('btn-container');
+    if(allData.length > 6 ){
+        btnContainer.classList.add('d-none');
+    }
 
     allData.forEach(feature => {
 
@@ -87,7 +91,7 @@ const spinner = isLoading => {
 
 document.getElementById('btn-see-more').addEventListener('click', function () {
     spinner(true);
-    const p = showDataALL(takeApiData);
+     showDataALL(takeApiData);
 
 })
 
