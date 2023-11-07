@@ -2,6 +2,7 @@
 let takeApiData;
 
 const loadFeatures = async () => {
+    
     try {
         const url = `https://openapi.programming-hero.com/api/ai/tools`;
         const res = await fetch(url);
@@ -36,7 +37,7 @@ const displayFeatures = (features) => {
 
 
 const showDataALL = (allData) => {
-
+    spinner(true);
     const featureContainer = document.getElementById('feature-container');
     featureContainer.innerText = '';
     const btnContainer = document.getElementById('btn-container');
@@ -81,16 +82,16 @@ const showDataALL = (allData) => {
 const spinner = isLoading => {
     const spinnerContainer = document.getElementById('spinner-container');
     if (isLoading === true) {
-        spinnerContainer.classList.remove('d-flex');
+        spinnerContainer.classList.remove('d-none');
     }
     else {
-        spinnerContainer.classList.add('d-flex');
+        spinnerContainer.classList.add('d-none');
     }
 }
 
 
 document.getElementById('btn-see-more').addEventListener('click', function () {
-    spinner(true);
+     spinner(true);
      showDataALL(takeApiData);
 
 })
@@ -118,11 +119,11 @@ const showModalBody = data => {
             <div class="p-3">
                 <h4>${data.description ? data.description : "No Description Found"}</h4>
                 <div class="d-flex gap-2">
-                    <p class="p-3 bg-white border-0 rounded">${data.pricing[0] ? data.pricing[0].price : "No Price Found"} ${data.pricing[0] ? data.pricing[0].plan : "No Plan found"}</p>
+                    <p class="p-3 bg-white text-primary border-0 rounded">${data.pricing[0] ? data.pricing[0].price : "No Price Found"} ${data.pricing[0] ? data.pricing[0].plan : "No Plan found"}</p>
 
-                    <p class="p-3 bg-white border-0 rounded">${data.pricing[1] ? data.pricing[1].price : "No price Found"} ${data.pricing[1] ? data.pricing[1].plan : "No Plan Found"}</p>
+                    <p class="p-3 bg-white text-success border-0 rounded">${data.pricing[1] ? data.pricing[1].price : "No price Found"} ${data.pricing[1] ? data.pricing[1].plan : "No Plan Found"}</p>
 
-                    <p class="p-3 bg-white border-0 rounded">${data.pricing[2] ? data.pricing[2].price : "No price Found"} ${data.pricing[2] ? data.pricing[2].plan : "No plan Found"}</p>
+                    <p class="p-3 bg-white text-info border-0 rounded">${data.pricing[2] ? data.pricing[2].price : "No price Found"} ${data.pricing[2] ? data.pricing[2].plan : "No plan Found"}</p>
                 </div>
                 <div class="d-flex gap-3">
                     <div>
